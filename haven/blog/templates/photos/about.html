@@ -1,0 +1,65 @@
+{% extends 'photos/home.html' %}
+
+{% block title %}About - Haven{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-12">
+      <h1 class="display-5 mb-3">About Haven</h1>
+      <p class="lead text-muted">A community for creators to share their art and connect</p>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-8">
+      <div class="card border-0 shadow-sm mb-4" style="border-radius: 10px;">
+        <div class="card-body p-5">
+          <h3 class="card-title mb-3">Our Mission</h3>
+          <p class="card-text">Haven is a curated platform designed for creators to showcase their work, connect with other creators, and build a supportive community around visual storytelling.</p>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-4" style="border-radius: 10px;">
+        <div class="card-body p-5">
+          <h3 class="card-title mb-3">Features</h3>
+          <ul class="list-unstyled">
+            <li class="mb-3"><strong>📸 Share Your Work</strong> - Upload and publish your creations with detailed descriptions</li>
+            <li class="mb-3"><strong>👥 Build Your Network</strong> - Follow other creators and discover inspiring work</li>
+            <li class="mb-3"><strong>💬 Engage & Comment</strong> - Join conversations and provide feedback on fellow creators' work</li>
+            <li class="mb-3"><strong>🎨 Professional Portfolio</strong> - Build a beautiful collection of your best creations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm" style="border-radius: 10px;">
+        <div class="card-body p-5">
+          <h3 class="card-title mb-3">Getting Started</h3>
+          <p class="card-text">New to Haven? Create an account, explore creators in your network, and start sharing your creative journey with the world.</p>
+          <a href="{% url 'blog:register' %}" class="btn btn-primary mt-3">Join Haven Today</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm sticky-top" style="top: 100px; border-radius: 10px;">
+        <div class="card-body p-4 text-center">
+          <h5 class="card-title mb-4">Quick Stats</h5>
+          <div class="mb-4">
+            <div class="display-6" style="color: #e74c3c;">12.5K+</div>
+            <p class="text-muted small">Active Creators</p>
+          </div>
+          <div class="mb-4">
+            <div class="display-6" style="color: #e74c3c;">50K+</div>
+            <p class="text-muted small">Creations Shared</p>
+          </div>
+          <div>
+            <div class="display-6" style="color: #e74c3c;">100K+</div>
+            <p class="text-muted small">Community Interactions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

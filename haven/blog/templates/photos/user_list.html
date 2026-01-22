@@ -1,0 +1,44 @@
+{% extends 'photos/home.html' %}
+{% block title %}Creators - Haven{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-12">
+      <h1 class="display-5 mb-2">Discover Creators</h1>
+      <p class="text-muted">Follow creators to see their work in your feed</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    {% for user in users %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card border-0 shadow-sm" style="border-radius: 10px;">
+          <div class="card-body text-center">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+              <span style="color: white; font-size: 2rem; font-weight: bold;">{{ user.username|first|upper }}</span>
+            </div>
+            <h5 class="card-title">{{ user.username }}</h5>
+            {% if user.email %}
+              <p class="text-muted small">{{ user.email }}</p>
+            {% endif %}
+            <div class="pt-3">
+              {% if user.id in following_ids %}
+                <a href="{% url 'blog:unfollow-user' user.id %}" class="btn btn-outline-danger w-100">Following</a>
+              {% else %}
+                <a href="{% url 'blog:follow-user' user.id %}" class="btn btn-primary w-100">Follow</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="alert alert-info text-center py-5" role="alert">
+          <h5>No other creators</h5>
+          <p class="mb-0">You're all set with the current community.</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

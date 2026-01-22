@@ -1,0 +1,58 @@
+{% extends 'photos/home.html' %}
+
+{% block title %}{{ post.title }} - Haven{% endblock %}
+
+{% block content %}
+<div class="container">
+  <article class="post-article">
+    <header class="mb-5">
+      <h1 class="display-4">{{ post.title }}</h1>
+      <div class="text-muted">
+        <span>By <strong>{{ post.author.username }}</strong></span>
+        <span class="ms-3">{{ post.date|date:"F d, Y" }}</span>
+      </div>
+    </header>
+    
+    <img src="{{ post.banner.url }}" class="img-fluid rounded mb-5" alt="{{ post.title }}" style="max-height: 500px; object-fit: cover;">
+    
+    <div class="post-body fs-5 lh-lg text-secondary mb-5">
+      {{ post.body }}
+    </div>
+  </article>
+  
+  <hr class="my-5">
+  
+  <section class="comments-section">
+    <h3 class="mb-4">Comments</h3>
+    
+    <div class="comments-list mb-5">
+      {% for comment in comments %}
+        <div class="comment card mb-3 border-0 shadow-sm">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2">
+              <strong>{{ comment.author.username }}</strong>
+              <small class="text-muted ms-2">{{ comment.created|date:"M d, Y H:i" }}</small>
+            </h6>
+            <p class="card-text">{{ comment.body }}</p>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-muted text-center py-4">No comments yet. Be the first to comment!</p>
+      {% endfor %}
+    </div>
+    
+    <div class="add-comment card border-0 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Leave a Comment</h5>
+        <form method="post" class="mt-4">
+          {% csrf_token %}
+          <div class="mb-3">
+            {{ form.body }}
+          </div>
+          <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

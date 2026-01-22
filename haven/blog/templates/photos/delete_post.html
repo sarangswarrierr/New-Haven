@@ -1,0 +1,35 @@
+{% extends 'photos/home.html' %}
+{% block title %}Delete Post - Haven{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-lg" style="border-radius: 12px;">
+        <div class="card-body p-5">
+          <div class="alert alert-warning border-0 mb-4" role="alert">
+            <h5 class="alert-heading">⚠ Delete Post?</h5>
+            <p class="mb-0">You're about to permanently delete:</p>
+          </div>
+          
+          <div class="card border-0 bg-light mb-4">
+            <div class="card-body">
+              <h6 class="card-title">{{ post.title }}</h6>
+              <p class="card-text text-muted small">{{ post.body|truncatewords:20 }}</p>
+            </div>
+          </div>
+          
+          <p class="text-muted mb-4">This action cannot be undone.</p>
+          
+          <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-danger py-2">Yes, Delete Permanently</button>
+              <a href="{% url 'blog:my-posts' %}" class="btn btn-outline-secondary py-2">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
