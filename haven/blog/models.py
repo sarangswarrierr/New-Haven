@@ -1,5 +1,5 @@
 from django.db import models
-from django_autoslug.fields import AutoSlugField
+from autoslug import AutoSlugField
 from django.conf import settings
 
 class Post(models.Model):
