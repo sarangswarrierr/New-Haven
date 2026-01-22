@@ -1,4 +1,5 @@
-autoslug
+Django>=4.2,<5.0
+django-autoslug
 Django>=4.2,<5.0
 gunicorn
 whitenoise
